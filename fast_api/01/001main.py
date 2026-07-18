@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, Path, Query
 
 # 创建 FastAPI 实例
 app = FastAPI()
@@ -33,3 +33,11 @@ async def get_news(n_id: int = Path(..., ge=1, le=100, description="新闻编号
 @app.get("/news/get/{n_name}")
 async def get_news_name(n_name: str = Path(..., min_length=2, max_length=10)):
     return {"news_name": f"新闻的名字是{n_name}"}
+
+# 查询参数
+@app.get("/news/news_list")
+async def get_news_list(
+        skip: int = Query(0, description="跳过几条数据", lt=100),
+        limit: int = Query(10, description="返回多少条数据", le=100)
+):
+    return {"skip": skip, "limit": limit}
