@@ -69,6 +69,7 @@ async def lifespan(app: FastAPI):
     await create_table()
     yield
     # shutdown: 应用关闭时的清理工作（如有需要可在此添加）
+    await async_engine.dispose()
 
 app = FastAPI(lifespan=lifespan)
 
@@ -77,7 +78,7 @@ app = FastAPI(lifespan=lifespan)
 AsyncSessionLocal = async_sessionmaker(
     bind=async_engine, # 数据库连接
     class_=AsyncSession, # 异步会话类
-    expire_on_commit=False # 不自动提交
+    expire_on_commit=False # 提交后对象属性不过期
 )
 
 # 依赖项
