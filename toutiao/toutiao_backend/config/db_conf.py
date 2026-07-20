@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, Asyn
 
 # DSN 格式：dialect+driver://user:password@host:port/database?params
 # aiomysql = MySQL 异步驱动，charset=utf8mb4 支持 emoji 等四字节字符
-DATABASE_URL = "mysql+aiomysql://root:@localhost:3306/fast_api?charset=utf8mb4"
+DATABASE_URL = "mysql+aiomysql://root:@localhost:3306/news_app?charset=utf8mb4"
 
 # 异步引擎：管理连接池，将 ORM 操作翻译为 SQL
 # 同步用 create_engine（WSGI），异步用 create_async_engine（ASGI/FastAPI）

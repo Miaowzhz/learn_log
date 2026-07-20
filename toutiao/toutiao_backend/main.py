@@ -1,7 +1,16 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from routers import news
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # 允许的跨域请求的源
+    allow_credentials=True, # 允许携带 cookie
+    allow_methods=["*"], # 允许的 HTTP 方法
+    allow_headers=["*"], # 允许的 HTTP 头
+)
 
 @app.get("/")
 async def root():
