@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import news
+from routers import news, users
 
 app = FastAPI()
 
@@ -17,4 +17,8 @@ async def root():
     return {"message": "Hello World"}
 
 # 挂载路由
+# 新闻模块
 app.include_router(news.router)
+
+# 用户模块
+app.include_router(users.router)
