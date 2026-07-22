@@ -37,3 +37,16 @@ class UserAuthResponse(BaseModel):
         populate_by_name=True, # alias / 字段名兼容
         from_attributes=True  # 允许从 ORM 对象获取属性
     )
+
+# 修改用户信息
+class UpdateUserRequest(BaseModel):
+    nickname: Optional[str] = None
+    avatar: Optional[str] = None
+    gender: Optional[str] = None
+    bio: Optional[str] = None
+    phone: Optional[str] = None
+
+# 修改用户密码
+class UpdateUserPassword(BaseModel):
+    old_password: str = Field(..., alias="oldPassword", title="旧密码")
+    new_password: str = Field(..., alias="newPassword", title="新密码")
