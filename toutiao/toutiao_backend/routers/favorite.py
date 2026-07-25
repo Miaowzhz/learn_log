@@ -6,7 +6,7 @@ from starlette import status
 from config.db_conf import get_db
 from crud import users, favorite
 from models.users import User
-from schemas.favorite import FavoriteCheckResponse, FavoriteBaseResponse, FavoriteAddRequest
+from schemas.favorite import FavoriteCheckResponse, FavoriteBaseResponse, FavoriteAddRequest, FavoriteListResponse
 from schemas.users import UserRequest, UserAuthResponse, UserInfoResponse, UserInfoBase, UpdateUserRequest, \
     UpdateUserPassword
 from utils.auth import get_current_user
@@ -77,14 +77,36 @@ async def get_favorite_list(
         user: User = Depends(get_current_user)
 ):
 
-    # 先查收藏表,获取该用户收藏的新闻id
-    # 再查新闻表,获取新闻详情
-
     offset = (page - 1) * page_size
 
-    news_list = await favorite.get_favorite_list(db, user.id, offset, page_size)
+    total, news_list = await favorite.get_favorite_list(db, user.id, offset, page_size)
 
+    favorite_list = [{
+        **news.__dict__,
+        "favoriteTime": favorite_time,
+        "favoriteId": favorite_id
+    } for news, favorite_time, favorite_id in news_list]
+
+    has_more = total > offset + page_size
+
+    data = FavoriteListResponse(list=favorite_list, total=total, hasMore=has_more)
     return success_response(
         message="获取收藏列表成功",
-        data=news_list
+        data=data
+    )
+
+# 清空收藏列表
+@router.delete("/clear")
+async def clear_favorite_list(
+        db: AsyncSession = Depends(get_db),
+        user: User = Depends(get_current_user)
+):
+
+    # 清空收藏
+    result = await favorite.clear_favorite_list(db, user.id)
+    if result == 0:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="收藏列表为空")
+
+    return success_response(
+        message=f"成功删除{result}条收藏记录"
     )
