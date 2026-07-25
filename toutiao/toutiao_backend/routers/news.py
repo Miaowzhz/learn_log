@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Query, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from config.db_conf import get_db
-from crud import news
+from crud import news, news_cache
 
 # 创建 APIRouter 实例
 router = APIRouter(prefix="/api/news", tags=["news"])
@@ -16,7 +16,7 @@ router = APIRouter(prefix="/api/news", tags=["news"])
 async def get_categories(skip: int = 0, limit: int = 100, db: AsyncSession = Depends(get_db)):
 
     # 获取数据库里的新闻分类 --> 先定义模型类 --> 封装查询数据的方法
-    categories = await news.get_categories(db, skip, limit)
+    categories = await news_cache.get_categories(db, skip, limit)
 
     return {
         "code": 200,
@@ -34,7 +34,7 @@ async def get_news_list(
 ):
     skip = (page - 1) * page_size
     limit = page_size
-    news_list = await news.get_news_list(db, category_id, skip, limit)
+    news_list = await news_cache.get_news_list(db, category_id, skip, limit)
     total = await news.get_news_total(db, category_id)
     has_more = (skip + limit) < total
     return {
