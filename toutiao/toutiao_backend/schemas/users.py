@@ -49,4 +49,4 @@ class UpdateUserRequest(BaseModel):
 # 修改用户密码
 class UpdateUserPassword(BaseModel):
     old_password: str = Field(..., alias="oldPassword", title="旧密码")
-    new_password: str = Field(..., alias="newPassword", title="新密码")
+    new_password: str = Field(..., alias="newPassword", title="新密码", min_length=6)
