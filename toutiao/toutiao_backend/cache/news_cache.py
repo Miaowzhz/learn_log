@@ -10,7 +10,7 @@ NEWS_LIST_PREFIX = "news:list:"
 
 # 获取新闻分类缓存
 async def get_cached_categories():
-    await get_json_cache(CATEGORIES_KEY)
+    return await get_json_cache(CATEGORIES_KEY)
 
 # 写入新闻分类缓存
 async def set_cache_categories(data: List[Dict[str, Any]], expire: int = 7200):
