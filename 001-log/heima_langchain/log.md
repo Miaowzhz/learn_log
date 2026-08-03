@@ -1,0 +1,16 @@
+大纲: 13-27
+1. 认识LangChain
+2. 模型
+3. 消息
+4. 提示词
+5. 工具
+6. 记忆
+7. Agent实战
+
+
+# 2026-08-03
+学习LangChain扩展学习视频
+进度: 13-15
+1. LangChain入门-认识LangChain
+2. LangChain入门-快速入门和Agent原理
+3. LangChain入门-初始化模型
