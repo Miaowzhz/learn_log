@@ -14,3 +14,13 @@
 1. LangChain入门-认识LangChain
 2. LangChain入门-快速入门和Agent原理
 3. LangChain入门-初始化模型
+
+# 2026-08-04
+学习LangChain扩展学习视频
+进度: 16-21
+1. LangChain入门-模型-调用模型
+2. LangChain入门-消息(Message)
+3. LangChain入门-提示词工程
+4. LangChain入门-工具(Tools)
+5. LangChain入门-预定义工具
+6. LangChain入门-短期记忆
