@@ -24,3 +24,10 @@
 4. LangChain入门-工具(Tools)
 5. LangChain入门-预定义工具
 6. LangChain入门-短期记忆
+
+# 2026-08-05
+复习之前学过的内容
+学习LangChain扩展学习视频
+进度: 22-24
+1. LangChain入门-短期记忆-持久存储
+2. LangChain入门-记忆管理策略
