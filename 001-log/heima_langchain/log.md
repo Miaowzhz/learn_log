@@ -33,4 +33,9 @@
 2. LangChain入门-记忆管理策略
 
 
-# 2026-08-06
+# 2026-08-07
+复习之前学过的内容
+学习LangChain扩展学习视频
+进度: 24-25
+1. LangChain入门-需求分析与功能验证
+2. LangChain入门-对接LangSmith

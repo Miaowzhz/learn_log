@@ -21,3 +21,4 @@ Thumbs.db
 # Environment
 .env
 .env.local
+007-simple-agent/.env

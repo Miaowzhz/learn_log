@@ -2,7 +2,7 @@ import os
 
 from langchain.agents import create_agent
 from langchain.chat_models import init_chat_model
-
+from pprint import pprint
 from step_02_tools import calculate_study_budget, get_topic_outline
 
 
@@ -54,7 +54,7 @@ def main() -> None:
             ]
         }
     )
-
+    # pprint(result)
     print(result["messages"][-1].content)
 
 

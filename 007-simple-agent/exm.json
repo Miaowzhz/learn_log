@@ -1,0 +1,177 @@
+{
+  "messages": [
+    HumanMessage(
+      content='我想用 7 天复习 LangChain，每天学习 45 分钟，请帮我制定计划。',
+      additional_kwargs={},
+      response_metadata={},
+      id='e6fe7120-5916-48e9-9a31-b5493c906aee',
+    ),
+
+    AIMessage(
+      content='好的，我来根据你的需求制定学习计划。首先让我计算总学习时间并查询 LangChain 主题大纲。',
+      additional_kwargs={
+        'refusal': None,
+        'reasoning_content': (
+          'The user wants to study LangChain for 7 days, 45 minutes per day. '
+          'I have both theme, days, and minutes. So I need to call '
+          'calculate_study_budget and get_topic_outline. These are independent, '
+          'so I can call them in parallel.'
+        ),
+      },
+      response_metadata={
+        'token_usage': {
+          'completion_tokens': 179,
+          'prompt_tokens': 582,
+          'total_tokens': 761,
+          'completion_tokens_details': {
+            'accepted_prediction_tokens': None,
+            'audio_tokens': None,
+            'reasoning_tokens': 57,
+            'rejected_prediction_tokens': None,
+          },
+          'prompt_tokens_details': {
+            'audio_tokens': None,
+            'cached_tokens': 512,
+          },
+          'prompt_cache_hit_tokens': 512,
+          'prompt_cache_miss_tokens': 70,
+        },
+        'model_provider': 'deepseek',
+        'model_name': 'deepseek-v4-flash',
+        'system_fingerprint': 'fp_a18b46594c_prod0820_fp8_kvcache_20260402',
+        'id': 'c21b93a8-8ff1-43aa-9400-746cc55e61f5',
+        'finish_reason': 'tool_calls',
+        'logprobs': None,
+      },
+      id='lc_run--019fdc57-b6b2-7433-a560-052cc051f894-0',
+      tool_calls=[
+        {
+          'name': 'calculate_study_budget',
+          'args': {'days': 7, 'minutes_per_day': 45},
+          'id': 'call_00_wlSNzuHLw2wsxRuRJABW3372',
+          'type': 'tool_call',
+        },
+        {
+          'name': 'get_topic_outline',
+          'args': {'topic': 'LangChain'},
+          'id': 'call_01_s22XVquXIiOqrOqibbxY0678',
+          'type': 'tool_call',
+        },
+      ],
+      invalid_tool_calls=[],
+      usage_metadata={
+        'input_tokens': 582,
+        'output_tokens': 179,
+        'total_tokens': 761,
+        'input_token_details': {'cache_read': 512},
+        'output_token_details': {'reasoning': 57},
+      },
+    ),
+
+    # ── 第 3 条：工具结果 - 学习预算 ──
+    ToolMessage(
+      content='总学习时间：315 分钟（7 天 x 45 分钟）',
+      name='calculate_study_budget',
+      id='9ca63d75-126e-45a9-85d2-ba9e71e433cc',
+      tool_call_id='call_00_wlSNzuHLw2wsxRuRJABW3372',
+    ),
+
+    # ── 第 4 条：工具结果 - 主题大纲 ──
+    ToolMessage(
+      content='模型与消息 -> 提示词 -> 工具 -> Agent -> 记忆与中间件',
+      name='get_topic_outline',
+      id='10bd8dbe-cf92-401c-b8f6-52d36e85c7f5',
+      tool_call_id='call_01_s22XVquXIiOqrOqibbxY0678',
+    ),
+
+    # ── 第 5 条：模型最终回答 ──
+    AIMessage(
+      content=(
+        '已获取必要信息，为你制定如下 LangChain 复习计划。\n\n'
+        '**基础数据**\n'
+        '- 总学习时间：315 分钟（7 天 × 45 分钟）\n'
+        '- 主题大纲：模型与消息 → 提示词 → 工具 → Agent → 记忆与中间件\n\n'
+        '---\n\n'
+        '### 📅 学习计划（共 7 天，每天 45 分钟）\n\n'
+        '| 天数 | 内容安排 | 时间 |\n'
+        '|------|----------|------|\n'
+        '| **第 1 天** | **模型与消息**：理解核心概念，梳理模型调用与消息传递的基本流程 | 45 分钟 |\n'
+        '| **第 2 天** | **提示词**：复习提示词的构造方式与应用场景 | 45 分钟 |\n'
+        '| **第 3 天** | **工具**：掌握工具的定义、注册与调用方式 | 45 分钟 |\n'
+        '| **第 4 天** | **Agent**：理解 Agent 的运行机制与决策流程 | 45 分钟 |\n'
+        '| **第 5 天** | **记忆与中间件**：学习记忆机制与中间件的作用 | 45 分钟 |\n'
+        '| **第 6 天** | **综合复习**：回顾「模型与消息 → 提示词 → 工具」三部分，串联知识链路 | 45 分钟 |\n'
+        '| **第 7 天** | **整体复盘**：通览全部大纲（Agent、记忆与中间件 及全流程），查漏补缺 | 45 分钟 |\n\n'
+        '**合计：315 分钟**，与工具计算结果一致。\n\n'
+        '---\n\n'
+        '### 💡 使用建议\n'
+        '- 每天按 45 分钟专注学习，可先通读概念，再用剩余时间结合代码做小练习，加深理解。\n'
+        '- 第 6、7 天用于巩固与串联，不涉及大纲之外的新知识点。\n'
+        '- 如需调整天数或每日时长，我可以重新帮你计算并制定新计划。\n\n'
+        '需要我把某一天的安排细化吗？'
+      ),
+      additional_kwargs={
+        'refusal': None,
+        'reasoning_content': (
+          'I have the total study time: 315 minutes (7 days x 45 minutes). '
+          'And the topic outline: 模型与消息 -> 提示词 -> 工具 -> Agent -> 记忆与中间件.\n\n'
+          'Now I need to make a plan covering 7 days, total time not exceeding 315 minutes. '
+          'I should distribute the outline across the 7 days. The outline has 5 topics, '
+          'so I need to spread them over 7 days.\n\n'
+          'Let me allocate:\n'
+          '- Day 1: 模型与消息 (45 min)\n'
+          '- Day 2: 提示词 (45 min)\n'
+          '- Day 3: 工具 (45 min)\n'
+          '- Day 4: Agent (45 min)\n'
+          '- Day 5: 记忆与中间件 (45 min)\n'
+          '- Day 6: 综合复习/实践 (45 min)\n'
+          '- Day 7: 查漏补缺/总结 (45 min)\n\n'
+          'But I must only use the topics from the outline. I can\'t invent extra knowledge points. '
+          'However, days 6 and 7 need to cover something. I could use them for review of the '
+          'outline topics. But I shouldn\'t fabricate new content. I can frame them as review '
+          'and consolidation of the 5 topics.\n\n'
+          'Actually, let me be careful: "只能根据工具返回的总时长和大纲制定计划，'
+          '不得伪造资料、链接或额外知识点。" So I should only use the outline topics. '
+          'Days 6 and 7 can be review/consolidation of the 5 topics.\n\n'
+          'Total time: 7 days × 45 min = 315 min. Each day 45 min.\n\n'
+          'Let me structure the plan.'
+        ),
+      },
+      response_metadata={
+        'token_usage': {
+          'completion_tokens': 753,
+          'prompt_tokens': 816,
+          'total_tokens': 1569,
+          'completion_tokens_details': {
+            'accepted_prediction_tokens': None,
+            'audio_tokens': None,
+            'reasoning_tokens': 334,
+            'rejected_prediction_tokens': None,
+          },
+          'prompt_tokens_details': {
+            'audio_tokens': None,
+            'cached_tokens': 640,
+          },
+          'prompt_cache_hit_tokens': 640,
+          'prompt_cache_miss_tokens': 176,
+        },
+        'model_provider': 'deepseek',
+        'model_name': 'deepseek-v4-flash',
+        'system_fingerprint': 'fp_a18b46594c_prod0820_fp8_kvcache_20260402',
+        'id': '189fd9ea-3d66-403e-8d78-cb054a7e26e4',
+        'finish_reason': 'stop',
+        'logprobs': None,
+      },
+      id='lc_run--019fdc57-c195-7473-b25e-934039cef81d-0',
+      tool_calls=[],
+      invalid_tool_calls=[],
+      usage_metadata={
+        'input_tokens': 816,
+        'output_tokens': 753,
+        'total_tokens': 1569,
+        'input_token_details': {'cache_read': 640},
+        'output_token_details': {'reasoning': 334},
+      },
+    ),
+  ],
+}

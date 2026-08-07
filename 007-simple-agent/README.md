@@ -57,13 +57,29 @@ Agent 的价值不是“调用了大模型”，而是让模型根据当前问�
 
 `step_03_agent.py` 已成功组装模型、系统提示词和两个工具。
 
-## 当前关卡：04 观察消息轨迹
+## 已完成：04 观察消息轨迹
 
-打开 `step_04_trace.py`，完成 `describe_message` 中的 4 个 TODO，然后运行：
+`step_04_trace.py` 已能只读地展示完整 Agent 消息轨迹。
+
+## 已完成：05 短期记忆
+
+`step_05_memory.py` 已验证同一 `thread_id` 的多轮状态恢复。
+
+## 已完成：06 可用 CLI 与异常边界
+
+最终入口为 `step_06_cli.py`：
 
 ```bash
 cd /Users/wmy/Documents/dev/learn_log/007-simple-agent
-/opt/homebrew/Caskroom/miniconda/base/envs/langchain1.2/bin/python step_04_trace.py
+/opt/homebrew/Caskroom/miniconda/base/envs/langchain1.2/bin/python step_06_cli.py
 ```
 
-成功标准：依次看到 `HumanMessage`、包含工具调用的 `AIMessage`、两个 `ToolMessage` 和最终 `AIMessage`。
+输入 `退出`、`exit` 或 `quit` 可以结束程序。
+
+已通过以下端到端验收：
+
+1. 输入“我想复习 LangChain”，Agent 会追问天数和每天时长。
+2. 接着输入“安排 3 天，每天 40 分钟”，Agent 会记住主题并生成 120 分钟的计划。
+3. 输入“安排 3 天，每天 0 分钟”，程序不会崩溃，并会要求修正参数。
+4. 输入“我想用 3 天学习 Django，每天 30 分钟”，会明确提示支持范围。
+5. 输入“退出”，程序正常结束。
