@@ -83,3 +83,7 @@ cd /Users/wmy/Documents/dev/learn_log/007-simple-agent
 3. 输入“安排 3 天，每天 0 分钟”，程序不会崩溃，并会要求修正参数。
 4. 输入“我想用 3 天学习 Django，每天 30 分钟”，会明确提示支持范围。
 5. 输入“退出”，程序正常结束。
+
+## LangSmith 部署
+
+可部署的 Agent Server 版本位于 `study_agent/`，本地运行和 LangSmith Cloud 部署步骤见 `DEPLOYMENT.md`。

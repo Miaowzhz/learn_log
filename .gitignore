@@ -22,3 +22,6 @@ Thumbs.db
 .env
 .env.local
 007-simple-agent/.env
+
+# LangGraph local development state
+.langgraph_api/
