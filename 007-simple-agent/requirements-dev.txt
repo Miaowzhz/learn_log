@@ -1,2 +1,4 @@
 -r requirements.txt
 langgraph-cli[inmem]==0.4.31
+pytest==9.0.3
+

@@ -40,11 +40,15 @@ model = init_chat_model(
     temperature=0,
 )
 
-# Agent Server injects and manages persistence at runtime.
-graph = create_agent(
-    model=model,
-    tools=[calculate_study_budget, get_topic_outline],
-    system_prompt=SYSTEM_PROMPT,
-    middleware=[ToolErrorMiddleware(on_error=handle_tool_error)],
-)
+def build_graph(checkpointer=None):
+    return create_agent(
+        model=model,
+        tools=[calculate_study_budget, get_topic_outline],
+        system_prompt=SYSTEM_PROMPT,
+        checkpointer=checkpointer,
+        middleware=[ToolErrorMiddleware(on_error=handle_tool_error)],
+    )
 
+
+# Agent Server 会为这个部署入口注入持久化组件。
+graph = build_graph()

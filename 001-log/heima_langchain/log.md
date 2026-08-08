@@ -39,3 +39,9 @@
 进度: 24-25
 1. LangChain入门-需求分析与功能验证
 2. LangChain入门-对接LangSmith
+
+# 2026-08-08
+0. 复习之前学过的内容
+1. 集成LangSmith部署
+2. 通过FastAPI部署
+3. 通过综合案例复习LangChain
